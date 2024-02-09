@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nextjs-app:
+    image: azizbenyaala/devopsproject:latest
+    ports:
+      - "3000:3000"
+
+  nestjs-app:
+    image: azizbenyaala/devopsproject:backendlatest
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mydatabase
+
